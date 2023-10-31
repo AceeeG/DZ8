@@ -8,7 +8,7 @@ namespace Lab
 {
     internal class Program
     {
-        static void DoExercise1()
+        static void DoExercises()
         {
             Console.WriteLine("Упражнения 1 - 3 совмещены\n");
 
@@ -93,10 +93,43 @@ namespace Lab
             } while (!command.Equals("выход"));
         }
 
+        static void DoHomework()
+        {
+            Console.WriteLine("Домашнее задание 1\n");
+            Song song1 = new Song();
+            Song song2 = new Song();
+            Song song3 = new Song();
+            Song song4 = new Song();
+            List<Song> list = new List<Song>() { song1, song2, song3, song4 };
+            for (int i = 0; i < list.Count; i++)
+            {
+                list[i].FillName();
+                list[i].FillAuthor();
+                if (i != 0)
+                {
+                    list[i].previous = list[i - 1];
+                }
+                list[i].PrintTitle();
+
+            }
+
+            if (list[1].Equals(list[1].previous))
+            {
+                Console.WriteLine("Это одна песня");
+            }
+            else
+            {
+                Console.WriteLine("Это разные песни");
+            }
+        }
+    
+
 
         static void Main(string[] args)
         {
-            DoExercise1();
+            Console.WriteLine("Лабораторная работа 9\n");
+            DoExercises();
+            DoHomework();
 
             Console.ReadKey();
         }

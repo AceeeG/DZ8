@@ -26,7 +26,6 @@ namespace Exercises
         private Person executor { get; set; }
         private TaskStatus status { get; set; }
         public ReportFrequency report_frequency { get; set; }
-
         private List<Report> reports { get; set; }
         public Task(string description, DateTime deadline, Person customer, ReportFrequency report_frequency)
         {
@@ -72,6 +71,7 @@ namespace Exercises
         }
         public void GenerateReports()
         {
+            TestTask();
             if (status == TaskStatus.InProgress)
             {
                 DateTime today = DateTime.Today;
@@ -82,13 +82,35 @@ namespace Exercises
                     {
                         Report daily_report = new Report("Дневной отчет", executor);
                         AddReport(daily_report);
+                        if (daily_report.Approve())
+                        {
+                            ClosedTask();
+                            Console.WriteLine("Отчет принят\n");
+                        }
+                        else
+                        {
+                            StartTask(executor);
+                            Console.WriteLine("Отчет не принят, на доработку\n");
+                        }
                     }
                 }
                 else if (report_frequency == ReportFrequency.Weekly)
                 {
                     if (today.DayOfWeek == DayOfWeek.Monday && !reports.Any(report => report.GetTime().Date >= today.AddDays(-7)))
                     {
-                        new Report("Недельный отчет", executor);
+                        Report monthly_report = new Report("Недельный отчет", executor);
+                        AddReport(monthly_report);
+                        if (monthly_report.Approve())
+                        {
+                            ClosedTask();
+                            Console.WriteLine("Отчет принят\n");
+
+                        }
+                        else
+                        {
+                            StartTask(executor);
+                            Console.WriteLine("Отчет не принят, на доработку\n");
+                        }
                     }
                 }
                 else if (report_frequency == ReportFrequency.Monthly)
@@ -97,6 +119,16 @@ namespace Exercises
                     {
                        Report monthly_report = new Report("Месячный отчёт", executor);
                        AddReport(monthly_report);
+                       if (monthly_report.Approve())
+                       {
+                           ClosedTask();
+                           Console.WriteLine("Отчет принят\n");
+                       }
+                       else
+                       {
+                           StartTask(executor);
+                           Console.WriteLine("Отчет не принят, на доработку\n");
+                       }
                     }
                 }
             }

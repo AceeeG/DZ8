@@ -26,6 +26,10 @@ namespace Exercises
             this.position = position;
         }
         
+        /// <summary>
+        /// Добавляет задачу человеку
+        /// </summary>
+        /// <param name="task"></param>
         public void AddTask(Task task)
         {
             this.task = task;

@@ -18,7 +18,7 @@ namespace Exercises
             time = DateTime.Now;
             this.executor = executor;
         }
-        public bool Approve(Task task)
+        public bool Approve()
         {
             approved = true;
             return approved;

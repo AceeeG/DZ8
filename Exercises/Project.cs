@@ -29,22 +29,41 @@ namespace Exercises
             tasks = new List<Task>();
             status = Status.Project;
         }
+
+        /// <summary>
+        /// Добавляет задачу проекту
+        /// </summary>
+        /// <param name="task"></param>
         public void AddTask(Task task)
         {
             tasks.Add(task);
         }
+        /// <summary>
+        /// Убирает задачу
+        /// </summary>
+        /// <param name="task"></param>
         public void RemoveTask(Task task)
         {
             tasks.Remove(task);
         }
+        /// <summary>
+        /// Меняет статус проекта на начатый
+        /// </summary>
         public void StartProject()
         {
             status = Status.Execution;
         }
+        /// <summary>
+        /// Меняет статус проекта на законченный
+        /// </summary>
         public void CloseProject()
         {
             status = Status.Closed;
         }
+        /// <summary>
+        /// Проверяет законченный проект или нет
+        /// </summary>
+        /// <returns></returns>
         public bool IsCompleted()
         {
             foreach (Task task in tasks)
@@ -55,6 +74,16 @@ namespace Exercises
                 }
             }
             return true;
+        }
+
+        public List<Task> GetTasks()
+        {
+            return tasks;
+        }
+
+        public Status GetStatus()
+        {
+            return status;
         }
     }
 }

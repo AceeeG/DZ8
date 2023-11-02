@@ -76,6 +76,10 @@ namespace Exercises
             return true;
         }
 
+        /// <summary>
+        /// Возвравщает list с заданиями
+        /// </summary>
+        /// <returns></returns>
         public List<Task> GetTasks()
         {
             return tasks;

@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Security;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -113,19 +114,12 @@ namespace Exercises
                             task9.GenerateReports();
                             task10.GenerateReports();
 
-                            int count = 0;
-
-                            for (int i = 0; i < project1.GetTasks().Count; i++)
-                            {
-                                if (project1.GetTasks()[i].GetStatus() == TaskStatus.Completed)
-                                {
-                                    count++;
-                                }
-                            }
-                            if (count == project1.GetTasks().Count)
+                            if (project1.IsCompleted())
                             {
                                 project1.CloseProject();
                             }
+                            
+                            
                         } while (project1.GetStatus() == Status.Closed);
 
                         Console.WriteLine("Ваш проект готов\n");
@@ -135,54 +129,53 @@ namespace Exercises
                     case 2:
 
                         Project project2 = new Project("Сделать мобильную игру", new DateTime(2023, 12, 20), customer, team_leader);
+                        projects.Add(project2);
+                        Task webtask1 = new Task("Верстка", new DateTime(2023, 11, 20), customer, ReportFrequency.Daily);
+                        Task webtask2 = new Task("Скрипты", new DateTime(2023, 11, 22), customer, ReportFrequency.Daily);
+                        Task webtask3 = new Task("Дизайн", new DateTime(2023, 11, 24), customer, ReportFrequency.Daily);
+                        Task webtask4 = new Task("Слоган", new DateTime(2023, 11, 25), customer, ReportFrequency.Weekly);
+                        Task webtask5 = new Task("PR", new DateTime(2023, 11, 28), customer, ReportFrequency.Weekly);
+                        Task webtask6 = new Task("База данных", new DateTime(2023, 11, 20), customer, ReportFrequency.Daily);
+                        Task webtask7 = new Task("Нейросети", new DateTime(2023, 12, 10), customer, ReportFrequency.Monthly);
+                        Task webtask8 = new Task("Создать чат окно", new DateTime(2023, 11, 25), customer, ReportFrequency.Weekly);
+                        Task webtask9 = new Task("Создать бургер меню", new DateTime(2023, 12, 5), customer, ReportFrequency.Daily);
+                        Task webtask10 = new Task("Протестировать", new DateTime(2023, 12, 15), customer, ReportFrequency.Monthly);
+
+                        project2.AddTask(webtask1);
+                        junior.AddTask(webtask1);
+                        project2.AddTask(webtask2);
+                        junior1.AddTask(webtask2);
+                        project2.AddTask(webtask3);
+                        junior2.AddTask(webtask3);
+                        project2.AddTask(webtask4);
+                        junior3.AddTask(webtask4);
+                        project2.AddTask(webtask5);
+                        middle.AddTask(webtask5);
+                        project2.AddTask(webtask1);
+                        middle1.AddTask(webtask6);
+                        project2.AddTask(webtask7);
+                        middle2.AddTask(webtask7);
+                        project2.AddTask(webtask8);
+                        senior.AddTask(webtask9);
+                        project2.AddTask(webtask9);
+                        senior1.AddTask(webtask9);
+                        project2.AddTask(webtask10);
+                        team_leader.AddTask(webtask10);
+
+                        project2.StartProject();
+
+                        webtask1.StartTask(junior);
+                        webtask2.StartTask(junior1);
+                        webtask3.StartTask(junior2);
+                        webtask4.StartTask(junior3);
+                        webtask5.StartTask(middle);
+                        webtask6.StartTask(middle1);
+                        webtask7.StartTask(middle2);
+                        webtask8.StartTask(senior);
+                        webtask9.StartTask(senior1);
+                        webtask10.StartTask(team_leader);
                         do
                         {
-                            projects.Add(project2);
-                            Task webtask1 = new Task("Верстка", new DateTime(2023, 11, 20), customer, ReportFrequency.Daily);
-                            Task webtask2 = new Task("Скрипты", new DateTime(2023, 11, 22), customer, ReportFrequency.Daily);
-                            Task webtask3 = new Task("Дизайн", new DateTime(2023, 11, 24), customer, ReportFrequency.Daily);
-                            Task webtask4 = new Task("Слоган", new DateTime(2023, 11, 25), customer, ReportFrequency.Weekly);
-                            Task webtask5 = new Task("PR", new DateTime(2023, 11, 28), customer, ReportFrequency.Weekly);
-                            Task webtask6 = new Task("База данных", new DateTime(2023, 11, 20), customer, ReportFrequency.Daily);
-                            Task webtask7 = new Task("Нейросети", new DateTime(2023, 12, 10), customer, ReportFrequency.Monthly);
-                            Task webtask8 = new Task("Создать чат окно", new DateTime(2023, 11, 25), customer, ReportFrequency.Weekly);
-                            Task webtask9 = new Task("Создать бургер меню", new DateTime(2023, 12, 5), customer, ReportFrequency.Daily);
-                            Task webtask10 = new Task("Протестировать", new DateTime(2023, 12, 15), customer, ReportFrequency.Monthly);
-
-                            project2.AddTask(webtask1);
-                            junior.AddTask(webtask1);
-                            project2.AddTask(webtask2);
-                            junior1.AddTask(webtask2);
-                            project2.AddTask(webtask3);
-                            junior2.AddTask(webtask3);
-                            project2.AddTask(webtask4);
-                            junior3.AddTask(webtask4);
-                            project2.AddTask(webtask5);
-                            middle.AddTask(webtask5);
-                            project2.AddTask(webtask1);
-                            middle1.AddTask(webtask6);
-                            project2.AddTask(webtask7);
-                            middle2.AddTask(webtask7);
-                            project2.AddTask(webtask8);
-                            senior.AddTask(webtask9);
-                            project2.AddTask(webtask9);
-                            senior1.AddTask(webtask9);
-                            project2.AddTask(webtask10);
-                            team_leader.AddTask(webtask10);
-
-                            project2.StartProject();
-
-                            webtask1.StartTask(junior);
-                            webtask2.StartTask(junior1);
-                            webtask3.StartTask(junior2);
-                            webtask4.StartTask(junior3);
-                            webtask5.StartTask(middle);
-                            webtask6.StartTask(middle1);
-                            webtask7.StartTask(middle2);
-                            webtask8.StartTask(senior);
-                            webtask9.StartTask(senior1);
-                            webtask10.StartTask(team_leader);
-
                             webtask1.GenerateReports();
                             webtask2.GenerateReports();
                             webtask3.GenerateReports();
@@ -238,20 +231,6 @@ namespace Exercises
                             webtask9.ClosedTask();
                             webtask10.ClosedTask();
                             
-
-                            int count = 0;
-
-                            for (int i = 0; i < project2.GetTasks().Count; i++)
-                            {
-                                if (project2.GetTasks()[i].GetStatus() == TaskStatus.Completed)
-                                {
-                                    count++;
-                                }
-                                if (count == project2.GetTasks().Count)
-                                {
-                                    project2.CloseProject();
-                                }
-                            }
                             */
                             if (project2.IsCompleted())
                             {

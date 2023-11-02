@@ -104,7 +104,7 @@ namespace Exercises
 
                         do
                         {   
-                            /*
+                            
                             task1.GenerateReports();
                             task2.GenerateReports();
                             task3.GenerateReports();
@@ -115,11 +115,11 @@ namespace Exercises
                             task8.GenerateReports();
                             task9.GenerateReports();
                             task10.GenerateReports();
-                            */
                             
                             
-                            Report report1 = new Report("Отчет по заданию 1", junior);
-                            Report report2 = new Report("Отчет по заданию 2", junior);
+                            /*
+                            Report report1 = new Report("Отчет по заданию 1", junior); //Кусок кода для моментального ответа, но нет периодичности отчетов.
+                            Report report2 = new Report("Отчет по заданию 2", junior); //Если хотите проверить вывод не ожидая месяц, расскоментите эту часть, и закоментите ту, что выше
                             Report report3 = new Report("Отчет по заданию 3", junior);
                             Report report4 = new Report("Отчет по заданию 4", junior);
                             Report report5 = new Report("Отчет по заданию 5", junior);
@@ -188,7 +188,7 @@ namespace Exercises
                             {
                                 project1.CloseProject();
                             }
-                            
+                            */
                             
                         } while (project1.GetStatus() != Status.Closed);
 
@@ -257,8 +257,8 @@ namespace Exercises
                             webtask9.GenerateReports();
                             webtask10.GenerateReports();
                             /*
-                            Report report1 = new Report("Отчет по заданию 1", junior);
-                            Report report2 = new Report("Отчет по заданию 2", junior);
+                            Report report1 = new Report("Отчет по заданию 1", junior); //Кусок кода для моментального ответа, но нет периодичности отчетов.
+                            Report report2 = new Report("Отчет по заданию 2", junior); //Если хотите проверить вывод не ожидая месяц, расскоментите эту часть, и закоментите ту, что выше
                             Report report3 = new Report("Отчет по заданию 3", junior);
                             Report report4 = new Report("Отчет по заданию 4", junior);
                             Report report5 = new Report("Отчет по заданию 5", junior);
@@ -279,27 +279,47 @@ namespace Exercises
                             webtask9.AddReport(report9);
                             webtask10.AddReport(report10);
 
-                            report1.Approve();
-                            report2.Approve();
-                            report3.Approve();
-                            report4.Approve();
-                            report5.Approve(); 
-                            report6.Approve(); 
-                            report7.Approve(); 
-                            report8.Approve(); 
-                            report9.Approve(); 
-                            report10.Approve();
+                            if (report1.Approve())
+                            {
+                                webtask1.ClosedTask();
+                            }
+                            if (report2.Approve())
+                            {
+                                webtask2.ClosedTask();
+                            }
+                            if (report3.Approve())
+                            {
+                                webtask3.ClosedTask();
+                            }
+                            if (report4.Approve())
+                            {
+                                webtask4.ClosedTask();
+                            }
+                            if (report5.Approve())
+                            {
+                                webtask5.ClosedTask();
+                            }
+                            if (report6.Approve())
+                            {
+                                webtask6.ClosedTask();
+                            }
+                            if (report7.Approve())
+                            {
+                                webtask7.ClosedTask();
+                            }
+                            if (report8.Approve())
+                            {
+                                webtask8.ClosedTask();
+                            }
+                            if (report9.Approve())
+                            {
+                                webtask9.ClosedTask();
+                            }
+                            if (report10.Approve())
+                            {
+                                webtask10.ClosedTask();
+                            }
 
-                            webtask1.ClosedTask();
-                            webtask2.ClosedTask();
-                            webtask3.ClosedTask();
-                            webtask4.ClosedTask();
-                            webtask5.ClosedTask();
-                            webtask6.ClosedTask();
-                            webtask7.ClosedTask();
-                            webtask8.ClosedTask();
-                            webtask9.ClosedTask();
-                            webtask10.ClosedTask();
                             
                             */
                             if (project2.IsCompleted())

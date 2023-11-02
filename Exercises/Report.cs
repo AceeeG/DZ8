@@ -18,10 +18,14 @@ namespace Exercises
             time = DateTime.Now;
             this.executor = executor;
         }
-        public bool Approve()
+        public bool Approve(Task task)
         {
             approved = true;
             return approved;
+        }
+        public DateTime GetTime()
+        {
+            return time;
         }
 
     }

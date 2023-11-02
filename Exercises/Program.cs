@@ -101,8 +101,10 @@ namespace Exercises
                         task9.StartTask(senior1);
                         task10.StartTask(team_leader);
 
+
                         do
-                        {
+                        {   
+                            /*
                             task1.GenerateReports();
                             task2.GenerateReports();
                             task3.GenerateReports();
@@ -113,6 +115,74 @@ namespace Exercises
                             task8.GenerateReports();
                             task9.GenerateReports();
                             task10.GenerateReports();
+                            */
+                            
+                            
+                            Report report1 = new Report("Отчет по заданию 1", junior);
+                            Report report2 = new Report("Отчет по заданию 2", junior);
+                            Report report3 = new Report("Отчет по заданию 3", junior);
+                            Report report4 = new Report("Отчет по заданию 4", junior);
+                            Report report5 = new Report("Отчет по заданию 5", junior);
+                            Report report6 = new Report("Отчет по заданию 6", junior);
+                            Report report7 = new Report("Отчет по заданию 7", junior);
+                            Report report8 = new Report("Отчет по заданию 8", junior);
+                            Report report9 = new Report("Отчет по заданию 9", junior);
+                            Report report10 = new Report("Отчет по заданию 10", junior);
+
+                            task1.AddReport(report1);
+                            task2.AddReport(report2);
+                            task3.AddReport(report3);
+                            task4.AddReport(report4);
+                            task5.AddReport(report5);
+                            task6.AddReport(report6);
+                            task7.AddReport(report7);
+                            task8.AddReport(report8);
+                            task9.AddReport(report9);
+                            task10.AddReport(report10);
+
+                            if (report1.Approve())
+                            {
+                                task1.ClosedTask();
+                            }
+                            if (report2.Approve())
+                            {
+                                task2.ClosedTask();
+                            }
+                            if (report3.Approve())
+                            {
+                                task3.ClosedTask();
+                            }
+                            if (report4.Approve())
+                            {
+                                task4.ClosedTask();
+                            }
+                            if (report5.Approve())
+                            {
+                                task5.ClosedTask();
+                            }
+                            if (report6.Approve())
+                            {
+                                task6.ClosedTask();
+                            }
+                            if (report7.Approve())
+                            {
+                                task7.ClosedTask();
+                            }
+                            if (report8.Approve())
+                            {
+                                task8.ClosedTask();
+                            }
+                            if (report9.Approve())
+                            {
+                                task9.ClosedTask();
+                            }
+                            if (report10.Approve())
+                            {
+                                task10.ClosedTask();
+                            }
+
+
+
 
                             if (project1.IsCompleted())
                             {
@@ -120,7 +190,7 @@ namespace Exercises
                             }
                             
                             
-                        } while (project1.GetStatus() == Status.Closed);
+                        } while (project1.GetStatus() != Status.Closed);
 
                         Console.WriteLine("Ваш проект готов\n");
 
@@ -242,12 +312,18 @@ namespace Exercises
                         Console.WriteLine("Ваш проект готов\n");
                     break;
 
+                    case 3:
+                        Console.WriteLine("Выходим");
+                        break;
+                    default:
+                        Console.WriteLine("Нет такой команды\n");
+                        break;
                 }
 
 
             } while (choise != 3);
-            
 
+            Console.ReadKey();
 
         }
     }

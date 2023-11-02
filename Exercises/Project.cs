@@ -19,7 +19,15 @@ namespace Exercises
         private Person customer { get; set; }
         private Person team_leader { get; set; }
         private List<Task> tasks { get; set; }
-        private Status status { get; set; }
+
+        private Status status;
+        public Status Status 
+        { 
+            get 
+            { 
+                return status; 
+            }
+        }
         public Project(string description, DateTime deadline, Person customer, Person team_leader)
         {
             this.description = description;
@@ -68,26 +76,12 @@ namespace Exercises
         {
             foreach (Task task in tasks)
             {
-                if(task.GetStatus() != TaskStatus.Completed)
+                if(task.Status != TaskStatus.Completed)
                 {
                     return false;
                 }
             }
             return true;
-        }
-
-        /// <summary>
-        /// Возвравщает list с заданиями
-        /// </summary>
-        /// <returns></returns>
-        public List<Task> GetTasks()
-        {
-            return tasks;
-        }
-
-        public Status GetStatus()
-        {
-            return status;
         }
     }
 }

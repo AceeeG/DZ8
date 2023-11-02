@@ -190,7 +190,7 @@ namespace Exercises
                             }
                             */
                             
-                        } while (project1.GetStatus() != Status.Closed);
+                        } while (project1.Status != Status.Closed);
 
                         Console.WriteLine("Ваш проект готов\n");
 
@@ -327,7 +327,7 @@ namespace Exercises
                                 project2.CloseProject();
                             }
 
-                        } while (project2.GetStatus() != Status.Closed);
+                        } while (project2.Status != Status.Closed);
 
                         Console.WriteLine("Ваш проект готов\n");
                     break;

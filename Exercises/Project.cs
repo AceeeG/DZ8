@@ -6,7 +6,55 @@ using System.Threading.Tasks;
 
 namespace Exercises
 {
+    enum Status
+    {
+        Project,
+        Execution,
+        Closed
+    }
     internal class Project
     {
+        private string description { get; set; }
+        private DateTime deadline { get; set; }
+        private Person customer { get; set; }
+        private Person team_leader { get; set; }
+        private List<Task> tasks { get; set; }
+        private Status status { get; set; }
+        public Project(string description, DateTime deadline, Person customer, Person team_leader)
+        {
+            this.description = description;
+            this.deadline = deadline;
+            this.customer = customer;     
+            this.team_leader = team_leader;
+            tasks = new List<Task>();
+            status = Status.Project;
+        }
+        public void AddTask(Task task)
+        {
+            tasks.Add(task);
+        }
+        public void RemoveTask(Task task)
+        {
+            tasks.Remove(task);
+        }
+        public void StartProject()
+        {
+            status = Status.Execution;
+        }
+        public void CloseProject()
+        {
+            status = Status.Closed;
+        }
+        public bool IsCompleted()
+        {
+            foreach (Task task in tasks)
+            {
+                if(task.GetStatus() != TaskStatus.Completed)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

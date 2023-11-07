@@ -96,10 +96,10 @@ namespace Lab
         static void DoHomework()
         {
             Console.WriteLine("Домашнее задание 1\n");
-            Song song1 = new Song();
-            Song song2 = new Song();
-            Song song3 = new Song();
-            Song song4 = new Song();
+            Song song1 = new Song("Владимирский Централ", "Круг");
+            Song song2 = new Song("Владимирский Централ", "Круг", song1);
+            Song song3 = new Song("Pharaon", "Листопад", song2);
+            Song song4 = new Song("Смешарики", "Тема Няшности", song3);
             List<Song> list = new List<Song>() { song1, song2, song3, song4 };
             for (int i = 0; i < list.Count; i++)
             {

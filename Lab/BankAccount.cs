@@ -27,7 +27,11 @@ namespace Lab
         {
             id_counter++;
         }
-
+        public BankAccount()
+        {
+            MakeUniqeID();
+            id = id_counter;
+        }
         /// <summary>
         /// Конструктор - создаёт банковский счёт
         /// </summary>
